@@ -12,51 +12,51 @@ import java.util.TreeMap;
 public class Ejercicio4A {
 
 	// procesar la línea para que al final
-	 // tengra registrado en algún sitio
-	 // el número de veces que se repite cada
-	 // palabar sin tener en cuenta mayúsculas
-	 // y minúsculas.
+	// tengra registrado en algún sitio
+	// el número de veces que se repite cada
+	// palabar sin tener en cuenta mayúsculas
+	// y minúsculas.
 	public static void main(String[] args) {
-		//InputStreamReader permite convertir cualquier InputStream en un Reader
-		InputStream input ;
+		// InputStreamReader permite convertir cualquier InputStream en un Reader
+		InputStream input;
 		InputStreamReader isr;
 		BufferedReader bf = null;
 		Map<String, Integer> palabras = new TreeMap<>();
-		String []partes;
-		
+		String[] partes;
+
 		try {
-			input= Ejercicio4A.class.getResourceAsStream("El Quijote (utf-8).txt");
-			isr= new InputStreamReader(input,"utf-8");
+			input = Ejercicio4A.class.getResourceAsStream("El Quijote (utf-8).txt");
+			isr = new InputStreamReader(input, "utf-8");
 			bf = new BufferedReader(isr);
-			 String linea;
-			 while((linea = bf.readLine()) != null) {
-				 partes = linea.toLowerCase().split("[^a-zA-Zá-úÁ-ÚüÜñÑ]+");
-				 for(String e:partes) {
-					 if (e.equals(""))
-						 continue;
-					 if(!palabras.containsKey(e)) {
-						 palabras.put(e,1);
-					 }else {
-						 palabras.put(e,palabras.get(e)+1);
-					 }
-				 }
-				 
-			 }
+			String linea;
+			while ((linea = bf.readLine()) != null) {
+				partes = linea.toLowerCase().split("[^a-zA-Zá-úÁ-ÚüÜñÑ]+");
+				for (String e : partes) {
+					if (e.equals(""))
+						continue;
+					if (!palabras.containsKey(e)) {
+						palabras.put(e, 1);
+					} else {
+						palabras.put(e, palabras.get(e) + 1);
+					}
+				}
+
+			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if (bf != null) 
+				if (bf != null)
 					bf.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		ObjectOutputStream out = null;
 		try {
 			out = new ObjectOutputStream(new FileOutputStream("ejercicio4.dat"));
@@ -73,7 +73,7 @@ public class Ejercicio4A {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 }
