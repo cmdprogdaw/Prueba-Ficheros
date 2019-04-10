@@ -25,8 +25,8 @@ public class Ejercicio4A {
 		String[] partes;
 
 		try {
-			input = Ejercicio4A.class.getResourceAsStream("El Quijote (utf-8).txt");
-			isr = new InputStreamReader(input, "utf-8");
+			input = Ejercicio4A.class.getResourceAsStream("El Quijote.txt");
+			isr = new InputStreamReader(input);
 			bf = new BufferedReader(isr);
 			String linea;
 			while ((linea = bf.readLine()) != null) {
